@@ -1,6 +1,4 @@
 #include <glenv.h>
-#include <GL/glew.h>
-#include <RGFW.h>
 #include <stdio.h>
 
 int main() {
