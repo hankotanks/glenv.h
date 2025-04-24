@@ -1,0 +1,7 @@
+# executables
+demo.exe
+demo
+# bear output
+compile_commands.json
+# clangd cache
+.cache/*
