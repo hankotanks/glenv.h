@@ -5,7 +5,7 @@ ROOT := $(notdir $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 ifeq ($(OS),Windows_NT)
     LIB := glenv.lib
-    LIBGL := -lopengl32 -lgdi32 -luser32 -lkernel32
+    LIBGL := -lopengl32 -lglu32 -lgdi32 -luser32 -lkernel32
 else
     LIB := libglenv.a
     LIBGL := -lGL
@@ -21,7 +21,7 @@ $(LIB): glenv.o glew.o
 	$(AR) rcs $@ $^
 
 glenv.o: glenv.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CFLAGSGL) -c $< -o $@
 
 glew.o: glew.c
 	$(CC) $(CFLAGS) $(CFLAGSGL) -c $< -o $@ $(LIBGL)
