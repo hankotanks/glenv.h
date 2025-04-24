@@ -1,2 +1,4 @@
+.cache/*
 demo
 demo.exe
+compile_commands.json

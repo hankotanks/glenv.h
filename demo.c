@@ -7,5 +7,7 @@ int main() {
         printf("Failed to initialize GLEW\n");
         return 1;
     }
+    struct nk_context* ctx = glenv_init(win);
+    
     return 0;
 }
