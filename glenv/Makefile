@@ -11,11 +11,16 @@ else
     LIBGL := -lGL -lX11 -lXrandr -lm
 endif
 
-CFLAGS := -isystem $(CURDIR)
+CFLAGS := -isystem$(CURDIR)
 CFLAGSGL := -DGLEW_NO_GLU -DGLEW_STATIC
 
 all: $(LIB)
-	$(info -isystem $(ROOT) -L$(ROOT) -lglenv $(LIBGL) -fgnu89-inline $(CFLAGSGL))
+
+get_obj_flags:
+	$(info -isystem$(ROOT) -fgnu89-inline $(CFLAGSGL))
+
+get_bin_flags:
+	$(info -isystem$(ROOT) -L$(ROOT) -lglenv $(LIBGL) -fgnu89-inline $(CFLAGSGL))
 
 $(LIB): glenv.o glew.o
 	$(AR) rcs $@ $^
@@ -29,4 +34,4 @@ glew.o: glew.c
 clean:
 	$(RM) *.o
 
-.PHONY: all clean
+.PHONY: all clean get_obj_flags get_bin_flags

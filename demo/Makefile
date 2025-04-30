@@ -1,9 +1,14 @@
 CC := gcc
 
-all: 
-	$(CC) demo.c $(shell $(MAKE) -s -C ../glenv) -o demo
+DIR_LIB := ../glenv
+
+all: glenv
+	$(CC) demo.c $(shell $(MAKE) get_bin_flags -s -C $(DIR_LIB)) -o demo
+
+glenv:
+	$(MAKE) -s -C $(DIR_LIB)
 
 clean:
-	$(MAKE) clean -C ../glenv
+	$(MAKE) clean -C $(DIR_LIB)
 
-.PHONY: all clean
+.PHONY: all glenv clean
